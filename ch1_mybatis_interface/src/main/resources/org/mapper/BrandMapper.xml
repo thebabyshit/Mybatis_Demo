@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mapper.BrandMapper">
+
+    <resultMap id="brandMap" type="org.pojo.Brand">
+        <id property="id" column="id"/>
+        <result property="companyName" column="company_name"/>
+        <result column="brand_name" property="brandName"/>
+    </resultMap>
+
+    <select id="selsectAll" resultType="org.pojo.Brand" resultMap="brandMap">
+        select * from tb_brand
+    </select>
+</mapper>

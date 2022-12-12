@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--	1.实体类简称	-->
+	<typeAliases>
+			<typeAlias type="com.matr1x.entity.User" alias="u"></typeAlias>
+		</typeAliases>
+
+<!--	2.连接数据库配置-->
+		<environments default="development">
+			<environment id="development">
+				<transactionManager type="JDBC"></transactionManager>
+				<dataSource type="POOLED">
+					<property name="driver" value="com.mysql.jdbc.Driver"/>
+					<property name="url" value="jdbc:mysql://localhost:3306/mybatis2022"/>
+					<property name="username" value="root"/>
+					<property name="password" value="root"/>
+				</dataSource>
+			</environment>
+		</environments>
+
+<!--	3.定位mapper-->
+	<mappers>
+		<mapper resource="com/matr1x/mapper/UserMapper.xml"/>
+	</mappers>
+</configuration>
