@@ -10,7 +10,112 @@
         <result column="brand_name" property="brandName"/>
     </resultMap>
 
+    <insert id="insertOne" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_brand (id, brand_name, company_name, ordered, description, status)
+        values (#{id}, #{brandName}, #{companyName}, #{ordered}, #{description}, #{status})
+    </insert>
+
     <select id="selsectAll" resultType="org.pojo.Brand" resultMap="brandMap">
-        select * from tb_brand
+        select *
+        from tb_brand
+    </select>
+
+    <!--
+        *参数占位符：
+            1.#{} : 会将其替换为? 为了防止SQL注入
+            2.${} : 拼接SQL，会存在SQL注入问题
+            3.使用时机：
+                * 参数传递时候： #{}
+                * 表名或者列名不固定的情况下： ${}
+        * 参数类型：
+            parameterType
+    -->
+    <select id="selectById" resultType="org.pojo.Brand" parameterType="int">
+        select *
+        from tb_brand
+        where id = ${id}
+    </select>
+
+    <!--
+        条件查询
+    -->
+    <select id="selectByCondition" resultType="org.pojo.Brand" resultMap="brandMap">
+        select *
+        from tb_brand
+        where status = #{status}
+          and company_Name like #{companyName}
+          and brand_Name like #{brandName}
+    </select>
+
+    <select id="selectByCondition2" resultType="org.pojo.Brand" resultMap="brandMap">
+        select *
+        from tb_brand
+        where status = #{status}
+          and company_Name like #{companyName}
+          and brand_Name like #{brandName}
+    </select>
+
+    <select id="selectByCondition3" resultType="org.pojo.Brand" resultMap="brandMap">
+        select *
+        from tb_brand
+        where status = #{status}
+          and company_Name like #{companyName}
+          and brand_Name like #{brandName}
+    </select>
+
+    <select id="selectByCondition4" resultType="org.pojo.Brand" resultMap="brandMap">
+        select *
+        from tb_brand
+        where 1 = 1
+        <if test="status !=null">
+            status = #{status}
+        </if>
+        <if test="companyName !=null and companyName != '' ">
+            and company_Name like #{companyName}
+        </if>
+        <if test="brandName !=null and brandName !='' ">
+            and brand_Name like #{brandName}
+        </if>
+
+    </select>
+
+
+    <select id="selectByCondition5" resultType="org.pojo.Brand" resultMap="brandMap">
+        select *
+        from tb_brand
+        where
+        <choose> <!--类似于switch-->
+            <when test="status !=null"> <!--类似于case-->
+                status = #{status}
+            </when>
+            <when test="companyName !=null and companyName != '' ">
+                company_Name like #{companyName}
+            </when>
+            <when test="brandName !=null and brandName !='' ">
+                brand_Name like #{brandName}
+            </when>
+            <otherwise>
+                <!--默认 防止未注入条件-->
+                1 = 1
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="selectByCondition6" resultType="org.pojo.Brand" resultMap="brandMap">
+        select *
+        from tb_brand
+        <where>
+            <choose> <!--类似于switch-->
+                <when test="status !=null"> <!--类似于case-->
+                    status = #{status}
+                </when>
+                <when test="companyName !=null and companyName != '' ">
+                    company_Name like #{companyName}
+                </when>
+                <when test="brandName !=null and brandName !='' ">
+                    brand_Name like #{brandName}
+                </when>
+            </choose>
+        </where>
     </select>
 </mapper>
