@@ -24,6 +24,5 @@ public class MybatisUtil {
             e.printStackTrace();
         }
         return ssf;
-
     }
 }

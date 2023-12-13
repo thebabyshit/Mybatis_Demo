@@ -21,6 +21,4 @@ public class Brand {
     private Integer ordered;
     private String description;
     private Integer status;
-
-
 }
