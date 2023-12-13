@@ -8,10 +8,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ch1_mybatis_helloworld" />
+        <module name="ch0_Swing_test" />
         <module name="ch1_mybatis_interface" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ch0_Swing_test" target="1.7" />
       <module name="ch1_mybatis_helloworld" target="1.5" />
       <module name="ch1_mybatis_interface" target="1.7" />
     </bytecodeTargetLevel>

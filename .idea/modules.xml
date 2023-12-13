@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ch0_Swing_test/ch0_Swing_test.iml" filepath="$PROJECT_DIR$/ch0_Swing_test/ch0_Swing_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/ch1_mybatis_helloworld/ch1_mybatis_helloworld.iml" filepath="$PROJECT_DIR$/ch1_mybatis_helloworld/ch1_mybatis_helloworld.iml" />
       <module fileurl="file://$PROJECT_DIR$/ch1_mybatis_interface/ch1_mybatis_interface.iml" filepath="$PROJECT_DIR$/ch1_mybatis_interface/ch1_mybatis_interface.iml" />
     </modules>
